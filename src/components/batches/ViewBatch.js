@@ -93,7 +93,7 @@ export default function ViewBatch() {
       </div>
 
       <div className='py-2' style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Link className='btn btn-primary' to='/create-batch'>
+        <Link className='btn btn-primary' to='/additem'>
           {" "}
           Add Item Manually{" "}
         </Link>

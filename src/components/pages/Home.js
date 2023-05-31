@@ -4,15 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import { getCurrentUser, authHeader } from "../../services/AuthService";
 
 export default function Home() {
+  let user = undefined;
   const [batches, setBatches] = useState([]);
 
   const { id } = useParams();
-
-  let currentUser = getCurrentUser();
-
-  const updateUser = () => {
-    currentUser = getCurrentUser();
-  };
 
   {
     /*const ebay = async () => {
@@ -29,19 +24,21 @@ export default function Home() {
 ebay();*/
   }
 
+  const updateUser = () => {
+    user = getCurrentUser();
+  };
+
   useEffect(() => {
     updateUser();
     loadBatches();
   }, []);
 
   const loadBatches = async () => {
-    if (currentUser) {
-      console.log(currentUser);
+    console.log(user);
+    if (user) {
       const result = await api.get("/api/batches", { headers: authHeader() }).catch((error) => {
         //  console.log(error.message);
       });
-
-      console.log(result.data);
 
       if (result) setBatches(result.data);
     }

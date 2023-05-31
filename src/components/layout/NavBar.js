@@ -38,6 +38,7 @@ export default function Navbar() {
       .then((response) => {
         updateUser();
         setRegState({ message: response.data.message, successful: true });
+        // const [_, forceUpdate] = useReducer((x) => x + 1, 0); // Force update
       })
       .catch((error) => {
         const resMessage =
@@ -53,6 +54,10 @@ export default function Navbar() {
       .then((response) => {
         updateUser();
         setRegState({ message: response.data.message, successful: true });
+
+        handleLogin();
+
+        const [_, forceUpdate] = useReducer((x) => x + 1, 0); // Force update
       })
       .catch((error) => {
         const resMessage =
